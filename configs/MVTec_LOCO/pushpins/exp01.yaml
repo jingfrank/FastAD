@@ -1,0 +1,50 @@
+model:
+  name: FastAD
+  backbone: "wide_resnet50_2"             
+  layer_to_extract: 3      
+  device: cuda                  
+
+  # Patch 相关
+  patchsize: 3
+  stride: 1
+
+  target_size: 256    
+
+  # 分位数参数
+  n_quantiles: 9
+  fm_quantiles: 1
+  fm_min_q: 0.01
+  fm_max_q: 0.99
+  min_q: 0.01
+  max_q: 0.99
+
+  # 协方差估计方法
+  patch_covariance_method: full   
+  global_covariance_method: LedoitWolf
+  regularization: 0.0001
+#0.000001
+#0.01
+  # 额外功能
+  pretrained_weights_path: ${paths.weights.wide_resnet50_2}
+
+dataset:
+  name: MVTec-LOCO
+  source: ${paths.datasets.mvtec}_loco
+  classname: pushpins
+  resize : 256
+  train_batch_size: 64
+  val_batch_size: 64
+  test_batch_size: 64
+  train_val_split: 1.0
+  num_workers: 1
+
+logging:
+  output_dir: ${paths.project_root}/outputs/MVTec_LOCO/pushpins
+  log_dir: ${paths.project_root}/logs/MVTec_LOCO/pushpins
+
+save_anomaly_maps: True
+anomaly_maps_dir : ${paths.project_root}/anomaly_maps_dir
+
+checkpoints:
+  save_model: False
+  save_dir: ${paths.project_root}/checkpoints/MVTec_LOCO/juice_bottle

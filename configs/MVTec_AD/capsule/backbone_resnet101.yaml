@@ -1,0 +1,36 @@
+model:
+  name: FastAD
+  backbone: resnet101
+  layer_to_extract: 2
+  device: cuda
+  patchsize: 3
+  stride: 1
+  target_size: 256
+  n_quantiles: 3
+  fm_quantiles: 2
+  min_q: 0.01
+  max_q: 0.99
+  fm_min_q: 0.01
+  fm_max_q: 0.99
+  patch_covariance_method: full
+  global_covariance_method: LedoitWolf
+  regularization: 0.0000001
+  pretrained_weights_path: ${paths.weights.resnet101}
+dataset:
+  name: MVTec-AD
+  source: ${paths.datasets.mvtec}
+  classname: capsule
+  resize: 256
+  train_batch_size: 32
+  val_batch_size: 32
+  test_batch_size: 32
+  train_val_split: 0.9
+  num_workers: 8
+logging:
+  output_dir: ${paths.project_root}/outputs/MVTec_AD/capsule
+  log_dir: ${paths.project_root}/logs/MVTec_AD/capsule
+save_anomaly_maps: False
+anomaly_maps_dir: ${paths.project_root}/anomaly_maps_dir
+checkpoints:
+  save_model: False
+  save_dir: ${paths.project_root}/checkpoints/MVTec_AD/capsule

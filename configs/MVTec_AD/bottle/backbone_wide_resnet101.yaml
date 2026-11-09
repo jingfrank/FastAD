@@ -1,0 +1,44 @@
+model:
+  name: FastAD
+  backbone: wide_resnet101_2             
+  layer_to_extract: 3       
+  device: cuda                  
+
+  # Patch 相关
+  patchsize: 3
+  stride: 1
+
+  target_size: 256       
+
+  # 分位数参数
+  n_quantiles: 3
+  fm_quantiles: 2
+  min_q: 0.01
+  max_q: 0.99
+  fm_min_q: 0.01
+  fm_max_q: 0.99
+  # 协方差估计方法
+  patch_covariance_method: full   
+  global_covariance_method: EmpiricalCovariance
+  regularization: 0.01
+  # 额外功能
+  pretrained_weights_path: ${paths.weights.wide_resnet101}
+
+dataset:
+  name: MVTec-AD
+  source: ${paths.datasets.mvtec}
+  classname: bottle
+  resize : 256
+  train_batch_size: 32
+  val_batch_size: 32
+  test_batch_size: 32
+  train_val_split: 0.9
+  num_workers: 4
+
+logging:
+  output_dir: ${paths.project_root}/outputs/MVTec_AD/bottle
+  log_dir: ${paths.project_root}/logs/MVTec_AD/bottle
+
+checkpoints:
+  save_model: False
+  save_dir: ${paths.project_root}/checkpoints/MVTec_AD/bottle

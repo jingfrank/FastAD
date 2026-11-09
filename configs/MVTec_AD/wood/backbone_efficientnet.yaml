@@ -1,0 +1,31 @@
+model:
+  name: FastAD
+  backbone: tf_efficientnet_b4 
+  layer_to_extract: 2
+  device: cuda
+  patchsize: 3
+  stride: 1
+  target_size: 256
+  n_quantiles: 3
+  fm_quantiles: 2
+  min_q: 0.001
+  max_q: 0.999
+  fm_min_q: 0.01
+  fm_max_q: 0.99
+  patch_covariance_method: full
+  global_covariance_method: LedoitWolf
+  regularization: 0.01
+  pretrained_weights_path: ${paths.weights.efficientnet_b4}
+dataset:
+  name: MVTec-AD
+  source: ${paths.datasets.mvtec}
+  classname: wood
+  resize: 256
+  train_batch_size: 32
+  val_batch_size: 32
+  test_batch_size: 32
+  train_val_split: 0.5
+  num_workers: 8
+logging:
+  output_dir: ${paths.project_root}/outputs/MVTec_AD/wood/efficientnet
+  log_dir: ${paths.project_root}/logs/MVTec_AD/wood/efficientnet

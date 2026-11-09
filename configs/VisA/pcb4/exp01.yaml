@@ -1,0 +1,40 @@
+model:
+  name: FastAD
+  backbone: "wide_resnet50_2"             
+  layer_to_extract: 1       
+  device: cuda                  
+
+  # Patch 相关
+  patchsize: 4
+  stride: 2
+
+  target_size: 224       
+
+  # 分位数参数
+  n_quantiles: 3
+  fm_quantiles: 2
+  min_q: 0.01
+  max_q: 0.99
+  fm_min_q: 0.01
+  fm_max_q: 0.99
+  # 协方差估计方法
+  patch_covariance_method: full   
+  global_covariance_method: LedoitWolf
+  regularization: 0.01
+  # 额外功能
+  pretrained_weights_path: ${paths.weights.wide_resnet50_2}
+
+dataset:
+  name: MVTec-AD
+  source: ${paths.datasets.visa}
+  classname: pcb4
+  resize : 224
+  train_batch_size: 32
+  val_batch_size: 32
+  test_batch_size: 32
+  train_val_split: 0.9
+  num_workers: 4
+
+logging:
+  output_dir: ${paths.project_root}/outputs/VisA/pcb4/exp01
+  log_dir: ${paths.project_root}/logs/VisA/pcb4/exp01

@@ -1,0 +1,66 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+.eggs/
+
+# Virtual environments
+.venv/
+env/
+venv/
+ENV/
+.env
+
+# Jupyter Notebook & Checkpoints
+.ipynb_checkpoints/
+*-checkpoint.yaml
+*-checkpoint.py
+*-checkpoint.txt
+*-checkpoint.log
+
+# IDE and Editor
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# AI Assistant configs & drafts
+.agents/
+skills-lock.json
+CLAUDE.md
+fastad_paper_extracted.txt
+
+# Datasets and Pretrained Weights
+data/
+datasets/
+pretrained_weights/
+*.pth
+*.pt
+# Private experiment scripts, archived variants, and local figures
+/scripts/
+/assets/
+
+# Logs and Runtime Outputs
+logs/
+run_logs/
+/outputs/
+anomaly_maps_dir/
+plot/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# LaTeX build artifacts
+*.aux
+*.log
+*.out
+*.toc
+*.synctex.gz

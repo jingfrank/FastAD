@@ -1,0 +1,40 @@
+cff-version: 1.2.0
+message: "If you use FastAD in your research, please cite the paper in preferred-citation."
+type: software
+title: "FastAD: A Deployable Framework for Real-Time Visual Anomaly Detection"
+authors:
+  - name: "FastAD contributors"
+url: "https://github.com/jingfrank/FastAD"
+repository-code: "https://github.com/jingfrank/FastAD"
+keywords:
+  - "anomaly detection"
+  - "defect detection"
+  - "real-time"
+  - "industrial inspection"
+  - "computer vision"
+license: "Apache-2.0"
+preferred-citation:
+  type: conference-paper
+  title: "FastAD: A Deployable Framework for Real-Time Visual Anomaly Detection"
+  authors:
+    - family-names: "Jing"
+      given-names: "Yuebin"
+    - family-names: "Ding"
+      given-names: "Guangtai"
+  conference:
+    name: "35th International Conference on Artificial Neural Networks (ICANN 2026)"
+    location: "Padua, Italy"
+    date-start: "2026-09-14"
+    date-end: "2026-09-17"
+  collection-title: "Artificial Neural Networks and Machine Learning – ICANN 2026"
+  collection-type: "Lecture Notes in Computer Science"
+  volume: 17090
+  start: 269
+  end: 281
+  year: 2027
+  publisher:
+    name: "Springer"
+    city: "Cham"
+  doi: "10.1007/978-3-032-38401-0_22"
+  url: "https://doi.org/10.1007/978-3-032-38401-0_22"
+  notes: "First online: 2026-09-14. The publisher's formal citation year is 2027."

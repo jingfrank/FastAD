@@ -1,0 +1,41 @@
+model:
+  name: FastAD
+  backbone: "efficientnet_b4"             
+  layer_to_extract: 5       
+  device: cuda                  
+
+  # Patch 相关
+  patchsize: 3
+  stride: 1
+
+  target_size: 224 
+
+  # 分位数参数
+  n_quantiles: 6
+  fm_quantiles: 6
+  min_q: 0
+  max_q: 1
+  fm_min_q: 0.01
+  fm_max_q: 0.99
+  # 协方差估计方法
+  patch_covariance_method: full   
+  global_covariance_method: LedoitWolf
+  regularization: 0.001
+
+  # 额外功能
+  pretrained_weights_path: ${paths.weights.efficientnet_b4}
+
+dataset:
+  name: MVTec-AD
+  source: ${paths.datasets.mvtec}
+  classname: cable
+  resize : 224
+  train_batch_size: 32
+  val_batch_size: 32
+  test_batch_size: 32
+  train_val_split: 0.5
+  num_workers: 1
+
+logging:
+  output_dir: ${paths.project_root}/outputs/MVTec_AD/cable
+  log_dir: ${paths.project_root}/logs/MVTec_AD/cable

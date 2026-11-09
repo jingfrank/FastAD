@@ -1,0 +1,19 @@
+paths:
+  # Base paths: read from environment variables if set, otherwise default to relative project directory
+  project_root: ${oc.env:FASTAD_ROOT,.}
+  datasets_root: ${oc.env:DATASETS_ROOT,./data}
+  weights_root: ${oc.env:WEIGHTS_ROOT,./pretrained_weights}
+  
+  # Dataset source directories
+  datasets:
+    mvtec: ${paths.datasets_root}/mvtec
+    visa: ${paths.datasets_root}/visa
+    loco: ${paths.datasets_root}/mvtec_loco
+  
+  # Pretrained weights file paths
+  weights:
+    wide_resnet50_2: ${paths.weights_root}/wide_resnet50_2_features_only.pth
+    wide_resnet101: ${paths.weights_root}/Wide_ResNet101_features_only.pth
+    resnet50: ${paths.weights_root}/resnet50_features_only.pth
+    resnet101: ${paths.weights_root}/ResNet101_features_only.pth
+    efficientnet_b4: ${paths.weights_root}/efficientnet_b4_features_only.pth
